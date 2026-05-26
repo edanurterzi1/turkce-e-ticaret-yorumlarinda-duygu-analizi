@@ -59,6 +59,19 @@ Eğitim işlemini başlatmak için veri setinizin yolunu belirterek aşağıdaki
 python train.py --data_csv "e-ticaret_urun_yorumlari.csv" --epochs 4 --batch_size 64 --lr 2e-5
 ```
 
+## 📊 Model Başarısı ve Değerlendirme (Evaluation)
+Proje geliştirme sürecinde farklı BERT varyasyonları ve dil modelleri test edilmiş; bu modeller arasından en yüksek F1-skorunu sağlayan ConvBERTurk mimarisi nihai model olarak seçilmiştir. Yürütülen bu tez çalışması kapsamında optimize edilen model, %98.77 doğruluk (accuracy) oranına ulaşarak yüksek bir başarı sergilemiştir.
+
+⚠️ Önemli Not: Eğitilen ConvBERTurk modeli, GitHub'ın dosya boyutu sınırlandırmaları nedeniyle bu depoya doğrudan yüklenememiştir. Bunun yerine, modelin başarı metrikleri ve sınıflandırma performansını gösteren analiz grafikleri plots/ klasörü altında paylaşılmış ve aşağıda listelenmiştir.
+
+📈 Performans ve Eğitim Grafikleri
+
+Karmaşıklık Matrisi (Confusion Matrix): Modelin olumlu ve olumsuz yorumları tahmin ederken sergilediği başarıyı ve sınıflar arasındaki doğru/yanlış dağılımını gösterir.
+
+ROC Eğrisi (ROC Curve): Modelin sınıfları ayırt etme gücünü ve genel sınıflandırma performansını temsil eder.
+
+Eğitim Süreci: Modelin her epoch (adım) bazında kayıp (loss) ve doğruluk (accuracy) değerlerindeki değişimi ve gelişim trendini gösterir.
+
 ## 🌐 API Kullanımı (Serving)
 Eğittiğiniz en iyi modeli canlıya almak için FastAPI sunucusunu aşağıdaki komutla başlatın:
 
@@ -68,4 +81,4 @@ python -m uvicorn api_service:app --host 0.0.0.0 --port 8000 --reload
 Sunucu çalıştıktan sonra tarayıcınızda `http://localhost:8000/docs` adresine giderek API'yi anında test edebilirsiniz.
 
 ## 📝 Teşekkür & Referans
-Bu çalışma bir lisans/yüksek lisans tez projesi kapsamında **[Edanur Terzi]** ve **[Melike Karaman]** tarafından ortaklaşa geliştirilmiş olup, doğal dil işleme (NLP) alanında Türkçe metinlerin sınıflandırılmasına yönelik deneysel bulgular içermektedir.
+Bu çalışma bir lisans tez projesi kapsamında **[Edanur Terzi]** ve **[Melike Karaman]** tarafından ortaklaşa geliştirilmiş olup, doğal dil işleme (NLP) alanında Türkçe metinlerin sınıflandırılmasına yönelik deneysel bulgular içermektedir.
