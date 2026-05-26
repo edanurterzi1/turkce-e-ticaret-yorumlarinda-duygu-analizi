@@ -1,9 +1,7 @@
 # E-Ticaret Ürün Yorumları Duygu Analizi ve Web API Entegrasyonu
 
----
 
 <a id="türkçe"></a>
-# E-Ticaret Ürün Yorumları Duygu Analizi (Sentiment Analysis)
 
 Bu proje, e-ticaret sitelerinden elde edilen Türkçe müşteri yorumlarını Doğal Dil İşleme (NLP) yöntemleriyle analiz ederek **olumlu** veya **olumsuz** olarak sınıflandırmayı amaçlayan bir tez projesidir.
 
