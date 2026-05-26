@@ -7,10 +7,10 @@ Bu proje, e-ticaret sitelerinden elde edilen Türkçe müşteri yorumlarını Do
 
 ## 📌 Proje Hakkında
 Bu çalışmada, derin öğrenme tabanlı Doğal Dil İşleme (NLP) yöntemleri kullanılarak API destekli bir duygu analizi (sentiment analysis) sistemi geliştirilmiştir. Projenin çekirdeğini Transformer mimarisi (BERT tabanlı modeller) oluşturmaktadır.
-Proje geliştirme sürecinde çeşitli dil modelleri (farklı BERT varyasyonları) ve farklı hiperparametre kombinasyonları (öğrenme hızı, epoch sayısı, batch size vb.) ile kapsamlı deneyler yapılmıştır. Elde edilen sonuçlar karşılaştırılarak, **en yüksek F1 skoru oranını veren** model mimarisi seçilmiş ve canlı sisteme (API) entegre edilmiştir.
+Proje geliştirme sürecinde çeşitli dil modelleri (farklı BERT varyasyonları) ve farklı batch size kombinasyonları ile hiperparametre kombinasyonları ile deneyler yapılmıştır. Elde edilen sonuçlar karşılaştırılarak, **en yüksek F1 skoru oranını veren** model mimarisi seçilmiş ve canlı sisteme (API) entegre edilmiştir.
 
 **📈 Model Başarısı ve Yeniden Üretilebilirlik (Reproducibility) Notu:**
-Bu resmi tez çalışması kapsamında optimize edilen en iyi model **%98.77** doğruluk (accuracy) oranına ulaşmıştır.
+Bu resmi tez çalışması kapsamında optimize edilen en iyi model **%98.77** F1-Skorunu ulaşmıştır.
 
 ## 📊 Veri Seti (Dataset)
 Projede kullanılan veri seti Kaggle üzerinde yayınlanmıştır. Veri setine buradan ulaşabilirsiniz:
@@ -19,8 +19,8 @@ Projede kullanılan veri seti Kaggle üzerinde yayınlanmıştır. Veri setine b
 ## 🚀 Özellikler
 - **Veri Ön İşleme:** HTML etiketleri, URL'ler, e-posta adresleri temizlenir ve tekrarlayan harfler (örneğin "çooook" -> "çook") NLP'ye uygun şekilde normalize edilir.
 - **Veri Seti Yönetimi:** Veri setindeki olumlu/olumsuz sınıf eşitsizliklerini gidermek için ağırlıklandırma (Class Weighting) yöntemi kullanılmıştır.
-- **Modüler Mimari:** Veri yükleme, metin temizleme, model eğitimi ve API servis işlemleri profesyonel yazılım mühendisliği prensiplerine uygun olarak farklı modüllere ayrılmıştır.
-- **Kapsamlı Değerlendirme:** ROC Eğrisi, Confusion Matrix, Sınıflandırma Raporları ve hata analizi (yanlış bilinen örneklerin tespiti) ile modelin performansı detaylıca incelenir.
+- **Modüler Mimari:** Veri yükleme, metin temizleme, model eğitimi ve API servis işlemleri farklı modüllere ayrılmıştır.
+- **Kapsamlı Değerlendirme:** ROC Eğrisi, Confusion Matrix, Sınıflandırma Raporları ile modelin performansı detaylıca incelenir.
 - **REST API Desteği:** `FastAPI` kullanılarak geliştirilen servis, tekli veya çoklu (batch) tahmin isteklerine yanıt verebilecek şekilde tasarlanmıştır.
 
 ## 📂 Proje Yapısı
@@ -60,17 +60,17 @@ python train.py --data_csv "e-ticaret_urun_yorumlari.csv" --epochs 4 --batch_siz
 ```
 
 ## 📊 Model Başarısı ve Değerlendirme (Evaluation)
-Proje geliştirme sürecinde farklı BERT varyasyonları ve dil modelleri test edilmiş; bu modeller arasından en yüksek F1-skorunu sağlayan ConvBERTurk mimarisi nihai model olarak seçilmiştir. Yürütülen bu tez çalışması kapsamında optimize edilen model, %98.77 doğruluk (accuracy) oranına ulaşarak yüksek bir başarı sergilemiştir.
+Proje geliştirme sürecinde farklı BERT varyasyonları ve dil modelleri test edilmiş; bu modeller arasından en yüksek F1-skorunu sağlayan ConvBERTurk mimarisi nihai model olarak seçilmiştir. Yürütülen bu tez çalışması kapsamında optimize edilen model, %98.77 F1-Skoruna ulaşmıştır.
 
 ⚠️ Önemli Not: Eğitilen ConvBERTurk modeli, GitHub'ın dosya boyutu sınırlandırmaları nedeniyle bu depoya doğrudan yüklenememiştir. Bunun yerine, modelin başarı metrikleri ve sınıflandırma performansını gösteren analiz grafikleri plots/ klasörü altında paylaşılmış ve aşağıda listelenmiştir.
 
 📈 Performans ve Eğitim Grafikleri
 
-Karmaşıklık Matrisi (Confusion Matrix): Modelin olumlu ve olumsuz yorumları tahmin ederken sergilediği başarıyı ve sınıflar arasındaki doğru/yanlış dağılımını gösterir.
+Karmaşıklık Matrisi (Confusion Matrix): Modelin olumlu ve olumsuz yorumları tahmin ederken sergilediği başarıyı ve sınıflar arasındaki doğru/yanlış dağılımını gösterir. ![Confusion Matrix](plots/confusion_matrix.png)
 
-ROC Eğrisi (ROC Curve): Modelin sınıfları ayırt etme gücünü ve genel sınıflandırma performansını temsil eder.
+ROC Eğrisi (ROC Curve): Modelin sınıfları ayırt etme gücünü ve genel sınıflandırma performansını temsil eder. ![ROC Curve](plots/roc_curve.png)
 
-Eğitim Süreci: Modelin her epoch (adım) bazında kayıp (loss) ve doğruluk (accuracy) değerlerindeki değişimi ve gelişim trendini gösterir.
+Eğitim Süreci: Modelin her epoch (adım) bazında kayıp (loss) ve doğruluk (accuracy) değerlerindeki değişimi ve gelişim trendini gösterir. ![Training Plot](plots/training_plot_epoch.png)
 
 ## 🌐 API Kullanımı (Serving)
 Eğittiğiniz en iyi modeli canlıya almak için FastAPI sunucusunu aşağıdaki komutla başlatın:
