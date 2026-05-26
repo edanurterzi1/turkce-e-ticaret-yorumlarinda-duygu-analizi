@@ -1,0 +1,12 @@
+torch
+transformers
+fastapi
+uvicorn
+pydantic
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+datasets
+evaluate
