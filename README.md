@@ -66,11 +66,11 @@ Proje geliştirme sürecinde farklı BERT varyasyonları ve dil modelleri test e
 
 📈 Performans ve Eğitim Grafikleri
 
-Karmaşıklık Matrisi (Confusion Matrix): Modelin olumlu ve olumsuz yorumları tahmin ederken sergilediği başarıyı ve sınıflar arasındaki doğru/yanlış dağılımını gösterir. ![Confusion Matrix](plots/confusion_matrix.png)
+Karmaşıklık Matrisi (Confusion Matrix): Modelin olumlu ve olumsuz yorumları tahmin ederken sergilediği başarıyı ve sınıflar arasındaki doğru/yanlış dağılımını gösterir. <br><img src="plots/confusion_matrix.png" width="50%"><br>
 
-ROC Eğrisi (ROC Curve): Modelin sınıfları ayırt etme gücünü ve genel sınıflandırma performansını temsil eder. ![ROC Curve](plots/roc_curve.png)
+ROC Eğrisi (ROC Curve): Modelin sınıfları ayırt etme gücünü ve genel sınıflandırma performansını temsil eder. <br><img src="plots/roc_curve.png" width="50%"><br>
 
-Eğitim Süreci: Modelin her epoch (adım) bazında kayıp (loss) ve doğruluk (accuracy) değerlerindeki değişimi ve gelişim trendini gösterir. ![Training Plot](plots/training_plot_epoch.png)
+Eğitim Süreci: Modelin her epoch (adım) bazında kayıp (loss) ve doğruluk (accuracy) değerlerindeki değişimi ve gelişim trendini gösterir. ![Training Plot]<br><img src="plots/training_plot_epoch.png" width="50%"><br>
 
 ## 🌐 API Kullanımı (Serving)
 Eğittiğiniz en iyi modeli canlıya almak için FastAPI sunucusunu aşağıdaki komutla başlatın:
