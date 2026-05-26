@@ -28,8 +28,6 @@ from sklearn.metrics import roc_curve, auc, RocCurveDisplay
 matplotlib.use('Agg')
 
 
-
-# Modüler yapıdan içe aktarımlar
 from src.utils import TrainingLoggerCallback, set_seed
 from src.data_loader import robust_load_csv_to_dataset
 
@@ -39,7 +37,7 @@ def main():
     parser.add_argument("--data_csv", type=str, 
                         default="C:/Users/edanu/Desktop/tez/e-ticaret_urun_yorumlari.csv") 
     parser.add_argument("--model", type=str, default="dbmdz/convbert-base-turkish-mc4-uncased")
-    parser.add_argument("--output", type=str, default=f"./ConvBert_uncased1_32b{datetime.now().strftime('%Y%m%d_%H%M')}")
+    parser.add_argument("--output", type=str, default=f"./ConvBert_uncased1{datetime.now().strftime('%Y%m%d_%H%M')}")
     parser.add_argument("--max_length", type=int, default=53)
     parser.add_argument("--epochs", type=int, default=4)
     parser.add_argument("--batch_size", type=int, default=32)
@@ -146,9 +144,6 @@ def main():
     recall_metric = evaluate.load("recall")
     
     def compute_metrics(eval_pred):
-        """
-        İP4 - Accuracy, Precision, Recall, F1 skorlarını hesapla
-        """
         logits, labels = eval_pred
         preds = np.argmax(logits, axis=-1)
         
@@ -350,7 +345,7 @@ def main():
     errors = []
     for i, (true_label, pred_label) in enumerate(zip(y_true, y_pred)):
         if true_label != pred_label:
-            # Test setinden orijinal metni al (eğer mümkünse)
+           
             errors.append({
                 'index': i,
                 'true_label': int(true_label),
